@@ -1,6 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(const FlutterStripe());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const FlutterStripe());
+}
 
 class FlutterStripe extends StatelessWidget {
   const FlutterStripe({Key? key}) : super(key: key);
@@ -8,6 +13,7 @@ class FlutterStripe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Flutter Stripe'),
