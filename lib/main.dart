@@ -1,5 +1,8 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
+import 'package:firebase_core/firebase_core.dart';
+
+import 'theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,9 +17,11 @@ class FlutterStripe extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'Flutter Stripe Payments',
+      theme: theme,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter Stripe'),
+          title: const Text('Flutter Stripe Payments'),
         ),
       ),
     );
