@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+enum AuthMode { login, register }
+
 class AuthHelper {
   static InputDecoration getInputDecoration({
     String? hintText,
