@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../helpers/auth_helper.dart';
 
@@ -65,7 +66,7 @@ class _AuthFormState extends State<AuthForm> {
   }
 }
 
-class PasswordField extends StatelessWidget {
+class PasswordField extends StatefulWidget {
   const PasswordField({
     super.key,
     this.hintText,
@@ -76,19 +77,50 @@ class PasswordField extends StatelessWidget {
   final TextInputAction? textInputAction;
 
   @override
+  State<PasswordField> createState() => _PasswordFieldState();
+}
+
+class _PasswordFieldState extends State<PasswordField> {
+  bool obscureText = true;
+
+  void _togglePasswordVisibility() {
+    setState(() => obscureText = !obscureText);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 35),
-      child: TextFormField(
-        decoration: AuthHelper.getInputDecoration(
-          hintText: hintText,
-          prefixIcon: Icons.key_rounded,
+    return Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 35),
+          child: TextFormField(
+            decoration: AuthHelper.getInputDecoration(
+              hintText: widget.hintText,
+              prefixIcon: Icons.key_rounded,
+            ),
+            obscureText: obscureText,
+            textInputAction: widget.textInputAction,
+            enableSuggestions: false,
+            autocorrect: false,
+          ),
         ),
-        obscureText: true,
-        textInputAction: textInputAction,
-        enableSuggestions: false,
-        autocorrect: false,
-      ),
+        Positioned(
+          right: 40,
+          top: 3,
+          child: IconButton(
+            icon: FaIcon(
+              obscureText
+                  ? FontAwesomeIcons.solidEyeSlash
+                  : FontAwesomeIcons.solidEye,
+              size: 20,
+              color: Colors.black54,
+            ),
+            onPressed: _togglePasswordVisibility,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+          ),
+        ),
+      ],
     );
   }
 }
