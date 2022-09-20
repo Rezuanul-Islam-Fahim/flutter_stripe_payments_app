@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../helpers/auth_helper.dart';
 
@@ -30,6 +31,7 @@ class _AuthFormState extends State<AuthForm> {
               ),
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
+              autocorrect: false,
             ),
           ),
           const SizedBox(height: 15),
@@ -42,6 +44,8 @@ class _AuthFormState extends State<AuthForm> {
               ),
               obscureText: true,
               textInputAction: TextInputAction.next,
+              enableSuggestions: false,
+              autocorrect: false,
             ),
           ),
           const SizedBox(height: 15),
@@ -57,6 +61,8 @@ class _AuthFormState extends State<AuthForm> {
                     ),
                     obscureText: true,
                     textInputAction: TextInputAction.next,
+                    enableSuggestions: false,
+                    autocorrect: false,
                   ),
                 ),
                 const SizedBox(height: 15),
