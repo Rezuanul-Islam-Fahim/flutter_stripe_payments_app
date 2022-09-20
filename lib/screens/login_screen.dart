@@ -31,7 +31,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 15),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 35),
                     child: TextFormField(
@@ -39,6 +39,36 @@ class LoginScreen extends StatelessWidget {
                         hintText: 'Password',
                         prefixIcon: Icons.key_rounded,
                       ),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  ElevatedButton(
+                    style: AuthHelper.authButtonStyle,
+                    child: const Text('Login Now'),
+                    onPressed: () {},
+                  ),
+                  const SizedBox(height: 15),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Don\'t have an account? ',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Register Here',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

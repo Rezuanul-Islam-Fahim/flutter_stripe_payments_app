@@ -20,4 +20,15 @@ class AuthHelper {
       prefixIcon: Icon(prefixIcon),
     );
   }
+
+  static ButtonStyle get authButtonStyle {
+    return ElevatedButton.styleFrom(
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      minimumSize: const Size(120, 45),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+    );
+  }
 }
