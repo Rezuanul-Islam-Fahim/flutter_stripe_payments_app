@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../helpers/auth_helper.dart';
 
@@ -35,37 +34,19 @@ class _AuthFormState extends State<AuthForm> {
             ),
           ),
           const SizedBox(height: 15),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 35),
-            child: TextFormField(
-              decoration: AuthHelper.getInputDecoration(
-                hintText: 'Password',
-                prefixIcon: Icons.key_rounded,
-              ),
-              obscureText: true,
-              textInputAction: TextInputAction.next,
-              enableSuggestions: false,
-              autocorrect: false,
-            ),
+          const PasswordField(
+            hintText: 'Password',
+            textInputAction: TextInputAction.next,
           ),
           const SizedBox(height: 15),
           if (widget.authMode == AuthMode.register)
             Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 35),
-                  child: TextFormField(
-                    decoration: AuthHelper.getInputDecoration(
-                      hintText: 'Confirm Password',
-                      prefixIcon: Icons.key_rounded,
-                    ),
-                    obscureText: true,
-                    textInputAction: TextInputAction.next,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                  ),
+              children: const [
+                PasswordField(
+                  hintText: 'Confirm Password',
+                  textInputAction: TextInputAction.done,
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: 15),
               ],
             ),
           ElevatedButton(
@@ -79,6 +60,34 @@ class _AuthFormState extends State<AuthForm> {
           ),
           const SizedBox(height: 15),
         ],
+      ),
+    );
+  }
+}
+
+class PasswordField extends StatelessWidget {
+  const PasswordField({
+    super.key,
+    this.hintText,
+    this.textInputAction,
+  });
+
+  final String? hintText;
+  final TextInputAction? textInputAction;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 35),
+      child: TextFormField(
+        decoration: AuthHelper.getInputDecoration(
+          hintText: hintText,
+          prefixIcon: Icons.key_rounded,
+        ),
+        obscureText: true,
+        textInputAction: textInputAction,
+        enableSuggestions: false,
+        autocorrect: false,
       ),
     );
   }
