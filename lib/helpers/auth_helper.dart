@@ -27,7 +27,7 @@ class AuthHelper {
     return ElevatedButton.styleFrom(
       elevation: 0,
       shadowColor: Colors.transparent,
-      minimumSize: const Size(120, 45),
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30),
       ),

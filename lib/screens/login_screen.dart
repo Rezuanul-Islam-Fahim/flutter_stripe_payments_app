@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../helpers/auth_helper.dart';
 import '../widgets/auth_form.dart';
 import '../widgets/auth_link.dart';
 import '../widgets/auth_screen_heading.dart';
@@ -17,8 +18,8 @@ class LoginScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
             AuthScreenHeading(),
-            AuthForm(),
-            AuthLink(),
+            AuthForm(authMode: AuthMode.login),
+            AuthLink(authMode: AuthMode.login),
           ],
         ),
       ),

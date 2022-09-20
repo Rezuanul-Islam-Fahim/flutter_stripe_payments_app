@@ -1,24 +1,36 @@
 import 'package:flutter/material.dart';
 
+import '../helpers/auth_helper.dart';
+import '../screens/login_screen.dart';
+import '../screens/register_screen.dart';
+
 class AuthLink extends StatelessWidget {
-  const AuthLink({super.key});
+  const AuthLink({super.key, this.authMode});
+
+  final AuthMode? authMode;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).pushReplacementNamed(
+          authMode == AuthMode.login ? RegisterScreen.route : LoginScreen.route,
+        );
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
-            'Don\'t have an account? ',
-            style: TextStyle(
+          Text(
+            authMode == AuthMode.login
+                ? 'Don\'t have an account? '
+                : 'Already have an account? ',
+            style: const TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
-            'Register Here',
+            authMode == AuthMode.login ? 'Register Here' : 'Login here',
             style: TextStyle(
               fontSize: 15,
               color: Theme.of(context).primaryColor,
