@@ -14,6 +14,16 @@ class AuthForm extends StatefulWidget {
 
 class _AuthFormState extends State<AuthForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _passwordHide = true;
+  bool _confirmPasswordHide = true;
+
+  void _togglePasswordVisibility() {
+    setState(() => _passwordHide = !_passwordHide);
+  }
+
+  void _toggleConfirmPasswordVisibility() {
+    setState(() => _confirmPasswordHide = !_confirmPasswordHide);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,19 +45,23 @@ class _AuthFormState extends State<AuthForm> {
             ),
           ),
           const SizedBox(height: 15),
-          const PasswordField(
+          PasswordField(
             hintText: 'Password',
             textInputAction: TextInputAction.next,
+            passwordHide: _passwordHide,
+            handler: _togglePasswordVisibility,
           ),
           const SizedBox(height: 15),
           if (widget.authMode == AuthMode.register)
             Column(
-              children: const [
+              children: [
                 PasswordField(
                   hintText: 'Confirm Password',
                   textInputAction: TextInputAction.done,
+                  passwordHide: _confirmPasswordHide,
+                  handler: _toggleConfirmPasswordVisibility,
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
               ],
             ),
           ElevatedButton(
@@ -66,26 +80,24 @@ class _AuthFormState extends State<AuthForm> {
   }
 }
 
-class PasswordField extends StatefulWidget {
+class PasswordField extends StatelessWidget {
   const PasswordField({
     super.key,
     this.hintText,
     this.textInputAction,
+    this.passwordHide,
+    this.handler,
   });
 
   final String? hintText;
   final TextInputAction? textInputAction;
+  final bool? passwordHide;
+  final Function()? handler;
+  // bool obscureText = true;
 
-  @override
-  State<PasswordField> createState() => _PasswordFieldState();
-}
-
-class _PasswordFieldState extends State<PasswordField> {
-  bool obscureText = true;
-
-  void _togglePasswordVisibility() {
-    setState(() => obscureText = !obscureText);
-  }
+  // void _togglePasswordVisibility() {
+  //   setState(() => obscureText = !obscureText);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -95,11 +107,11 @@ class _PasswordFieldState extends State<PasswordField> {
           padding: const EdgeInsets.symmetric(horizontal: 35),
           child: TextFormField(
             decoration: AuthHelper.getInputDecoration(
-              hintText: widget.hintText,
+              hintText: hintText,
               prefixIcon: Icons.key_rounded,
             ),
-            obscureText: obscureText,
-            textInputAction: widget.textInputAction,
+            obscureText: passwordHide!,
+            textInputAction: textInputAction,
             enableSuggestions: false,
             autocorrect: false,
           ),
@@ -109,13 +121,13 @@ class _PasswordFieldState extends State<PasswordField> {
           top: 3,
           child: IconButton(
             icon: FaIcon(
-              obscureText
+              passwordHide!
                   ? FontAwesomeIcons.solidEyeSlash
                   : FontAwesomeIcons.solidEye,
               size: 20,
               color: Colors.black54,
             ),
-            onPressed: _togglePasswordVisibility,
+            onPressed: handler!,
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
           ),
