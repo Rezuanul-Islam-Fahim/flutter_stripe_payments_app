@@ -12,6 +12,5 @@ ThemeData get theme {
       systemOverlayStyle: SystemUiOverlayStyle.light,
     ),
     scaffoldBackgroundColor: Colors.white,
-    // navigationBarTheme:
   );
 }
