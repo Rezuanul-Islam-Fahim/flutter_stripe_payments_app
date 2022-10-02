@@ -10,6 +10,7 @@ class AuthForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+    final FocusNode confirmPasswordNode = FocusNode();
 
     return Form(
       key: formKey,
@@ -29,19 +30,21 @@ class AuthForm extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 15),
-          const PasswordField(
+          PasswordField(
             hintText: 'Password',
             textInputAction: TextInputAction.next,
+            requestFocus: confirmPasswordNode,
           ),
           const SizedBox(height: 15),
           if (authMode == AuthMode.register)
             Column(
-              children: const [
+              children: [
                 PasswordField(
                   hintText: 'Confirm Password',
                   textInputAction: TextInputAction.next,
+                  focusNode: confirmPasswordNode,
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
               ],
             ),
           ElevatedButton(
@@ -63,10 +66,14 @@ class PasswordField extends StatefulWidget {
     super.key,
     this.hintText,
     this.textInputAction,
+    this.focusNode,
+    this.requestFocus,
   });
 
   final String? hintText;
   final TextInputAction? textInputAction;
+  final FocusNode? focusNode;
+  final FocusNode? requestFocus;
 
   @override
   State<PasswordField> createState() => _PasswordFieldState();
@@ -99,6 +106,12 @@ class _PasswordFieldState extends State<PasswordField> {
         textInputAction: widget.textInputAction,
         enableSuggestions: false,
         autocorrect: false,
+        focusNode: widget.focusNode,
+        onFieldSubmitted: (_) {
+          if (widget.requestFocus != null) {
+            FocusScope.of(context).requestFocus(widget.requestFocus);
+          }
+        },
       ),
     );
   }
