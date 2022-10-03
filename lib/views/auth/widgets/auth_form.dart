@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../services/auth_service.dart';
+import '../../home/home.dart';
 import '../helpers/auth_exception_handler.dart';
 import '../helpers/auth_helper.dart';
 import '../models/auth_result.dart';
@@ -59,6 +60,8 @@ class _AuthFormState extends State<AuthForm> {
 
       if (mounted) {
         AuthResult authResult = AuthExceptionHandler.getAuthResult(status);
+
+        Navigator.of(context).pushReplacementNamed(Home.route);
 
         Flushbar(
           title: authResult.title,

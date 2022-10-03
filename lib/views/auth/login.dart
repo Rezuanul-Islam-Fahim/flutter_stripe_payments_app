@@ -16,10 +16,10 @@ class Login extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const AuthPageHeading(),
+          children: const [
+            AuthPageHeading(),
             AuthForm(authMode: AuthMode.login),
-            const AuthLink(authMode: AuthMode.login),
+            AuthLink(authMode: AuthMode.login),
           ],
         ),
       ),

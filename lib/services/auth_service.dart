@@ -44,7 +44,7 @@ class AuthService {
     AuthStatus status;
 
     try {
-      UserCredential _userData = await _auth.createUserWithEmailAndPassword(
+      UserCredential userData = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );

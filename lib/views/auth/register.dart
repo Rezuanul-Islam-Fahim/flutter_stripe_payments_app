@@ -16,10 +16,10 @@ class Register extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const AuthPageHeading(),
+          children: const [
+            AuthPageHeading(),
             AuthForm(authMode: AuthMode.register),
-            const AuthLink(authMode: AuthMode.register),
+            AuthLink(authMode: AuthMode.register),
           ],
         ),
       ),
