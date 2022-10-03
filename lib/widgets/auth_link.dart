@@ -11,6 +11,8 @@ class AuthLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+
     return GestureDetector(
       onTap: () {
         Navigator.of(context).pushReplacementNamed(
@@ -24,17 +26,12 @@ class AuthLink extends StatelessWidget {
             authMode == AuthMode.login
                 ? 'Don\'t have an account? '
                 : 'Already have an account? ',
-            style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.titleSmall,
           ),
           Text(
             authMode == AuthMode.login ? 'Register Here' : 'Login here',
-            style: TextStyle(
-              fontSize: 15,
-              color: Theme.of(context).primaryColor,
-              fontWeight: FontWeight.bold,
+            style: theme.textTheme.titleSmall!.copyWith(
+              color: theme.primaryColor,
             ),
           ),
         ],

@@ -7,11 +7,9 @@ class AuthScreenHeading extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-        style: TextStyle(
-          fontSize: 28,
-          fontWeight: FontWeight.bold,
-          color: Theme.of(context).primaryColor,
-        ),
+        style: Theme.of(context).textTheme.displayMedium!.copyWith(
+              color: Theme.of(context).primaryColor,
+            ),
         text: 'Flutter',
         children: const [
           TextSpan(

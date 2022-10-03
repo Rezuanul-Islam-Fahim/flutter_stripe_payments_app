@@ -5,6 +5,7 @@ class AppTheme {
   static ThemeData get theme {
     return ThemeData(
       primarySwatch: Colors.indigo,
+      scaffoldBackgroundColor: Colors.white,
       appBarTheme: const AppBarTheme(
         titleTextStyle: TextStyle(
           fontSize: 20,
@@ -17,8 +18,11 @@ class AppTheme {
               fontSize: 15,
               fontWeight: FontWeight.bold,
             ),
+            displayMedium: const TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-      scaffoldBackgroundColor: Colors.white,
     );
   }
 }
