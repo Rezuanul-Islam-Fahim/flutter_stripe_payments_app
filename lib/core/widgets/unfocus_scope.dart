@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class UnfocusBody extends StatelessWidget {
-  const UnfocusBody({super.key, required this.child});
+class UnfocusScope extends StatelessWidget {
+  const UnfocusScope({super.key, required this.child});
 
   final Widget child;
 

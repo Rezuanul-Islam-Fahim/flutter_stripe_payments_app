@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_stripe_payments_app/core/routes.dart';
+import 'package:flutter_stripe_payments_app/views/splash.dart';
 
 import 'core/app_theme.dart';
 import 'views/auth/login.dart';
@@ -21,7 +22,7 @@ class FlutterStripe extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Stripe Payments',
       theme: AppTheme.theme,
-      initialRoute: Login.route,
+      initialRoute: Splash.route,
       routes: routes,
     );
   }
