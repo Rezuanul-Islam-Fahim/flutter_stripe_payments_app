@@ -61,13 +61,17 @@ class _AuthFormState extends State<AuthForm> {
       if (mounted) {
         AuthResult authResult = AuthExceptionHandler.getAuthResult(status);
 
-        Navigator.of(context).pushReplacementNamed(Home.route);
+        if (status == AuthStatus.loginSuccess ||
+            status == AuthStatus.registerSuccess) {
+          Navigator.of(context).pushReplacementNamed(Home.route);
+        }
 
         Flushbar(
           title: authResult.title,
           message: authResult.content,
           duration: const Duration(seconds: 3),
-          leftBarIndicatorColor: status != AuthStatus.success
+          leftBarIndicatorColor: status != AuthStatus.loginSuccess &&
+                  status != AuthStatus.registerSuccess
               ? Colors.red[700]
               : Colors.green[500],
           margin: const EdgeInsets.all(20),

@@ -20,7 +20,7 @@ class AuthService {
         password: password,
       );
 
-      status = AuthStatus.success;
+      status = AuthStatus.loginSuccess;
     } on FirebaseAuthException catch (e) {
       if (kDebugMode) {
         print('*********** Auth Exception ***********');
@@ -49,7 +49,7 @@ class AuthService {
         password: password,
       );
 
-      status = AuthStatus.success;
+      status = AuthStatus.registerSuccess;
     } on FirebaseAuthException catch (e) {
       if (kDebugMode) {
         print('*********** Auth Exception ***********');

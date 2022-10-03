@@ -1,7 +1,8 @@
 import '../models/auth_result.dart';
 
 enum AuthStatus {
-  success,
+  loginSuccess,
+  registerSuccess,
   wrongPassword,
   invalidEmail,
   userDisabled,
@@ -49,10 +50,16 @@ class AuthExceptionHandler {
     AuthResult result;
 
     switch (status) {
-      case AuthStatus.success:
+      case AuthStatus.loginSuccess:
         result = const AuthResult(
           title: 'Success',
           content: 'You\'ve successfully logged in',
+        );
+        break;
+      case AuthStatus.registerSuccess:
+        result = const AuthResult(
+          title: 'Success',
+          content: 'You\'ve successfully created a new account',
         );
         break;
       case AuthStatus.wrongPassword:
