@@ -30,6 +30,8 @@ class AuthHelper {
         borderRadius: BorderRadius.circular(8),
       ),
       textStyle: Theme.of(context).textTheme.titleSmall,
+      elevation: 0,
+      shadowColor: Colors.transparent,
     );
   }
 }
