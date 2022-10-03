@@ -15,7 +15,7 @@ class AuthForm extends StatelessWidget {
       key: formKey,
       child: Column(
         children: [
-          const SizedBox(height: 25),
+          const SizedBox(height: 30),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 35),
             child: TextFormField(
@@ -28,24 +28,30 @@ class AuthForm extends StatelessWidget {
               autocorrect: false,
             ),
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 18),
           const PasswordField(hintText: 'Password'),
-          const SizedBox(height: 15),
+          const SizedBox(height: 18),
           if (authMode == AuthMode.register)
             Column(
               children: const [
                 PasswordField(hintText: 'Confirm Password'),
-                SizedBox(height: 15),
+                SizedBox(height: 18),
               ],
             ),
-          ElevatedButton(
-            style: AuthHelper.authButtonStyle,
-            child: Text(
-              authMode == AuthMode.login ? 'Login Now' : 'Create Account',
+          SizedBox(
+            width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 35),
+              child: ElevatedButton(
+                style: AuthHelper.getAuthButtonStyle(context),
+                child: Text(
+                  authMode == AuthMode.login ? 'Login Now' : 'Create Account',
+                ),
+                onPressed: () {},
+              ),
             ),
-            onPressed: () {},
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 20),
         ],
       ),
     );
