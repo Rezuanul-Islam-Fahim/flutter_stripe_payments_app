@@ -165,7 +165,7 @@ class _AuthFormState extends State<AuthForm> {
                     ),
             ),
           ),
-          onPressed: () => authenticate(context),
+          onPressed: !isLoggingIn ? () => authenticate(context) : () {},
           child: !isLoggingIn
               ? Text(
                   widget.authMode == AuthMode.login
