@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AuthScreenHeading extends StatelessWidget {
-  const AuthScreenHeading({super.key});
+class AuthPageHeading extends StatelessWidget {
+  const AuthPageHeading({super.key});
 
   @override
   Widget build(BuildContext context) {

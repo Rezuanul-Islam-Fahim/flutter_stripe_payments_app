@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../screens/login_screen.dart';
-import '../screens/register_screen.dart';
+import '../views/auth/login.dart';
+import '../views/auth/register.dart';
 
 Map<String, Widget Function(BuildContext)> get routes {
   return {
-    LoginScreen.route: (_) => const LoginScreen(),
-    RegisterScreen.route: (_) => const RegisterScreen(),
+    Login.route: (_) => const Login(),
+    Register.route: (_) => const Register(),
   };
 }

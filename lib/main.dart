@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_stripe_payments_app/core/routes.dart';
 
-import 'screens/login_screen.dart';
-import 'core/theme.dart';
+import 'core/app_theme.dart';
+import 'views/auth/login.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +21,7 @@ class FlutterStripe extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Stripe Payments',
       theme: AppTheme.theme,
-      initialRoute: LoginScreen.route,
+      initialRoute: Login.route,
       routes: routes,
     );
   }

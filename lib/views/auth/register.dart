@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../helpers/auth_helper.dart';
-import '../widgets/auth_form.dart';
-import '../widgets/auth_link.dart';
-import '../widgets/auth_screen_heading.dart';
+import 'helpers/auth_helper.dart';
+import 'widgets/auth_form.dart';
+import 'widgets/auth_link.dart';
+import 'widgets/auth_page_heading.dart';
 
-class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({super.key});
+class Register extends StatelessWidget {
+  const Register({super.key});
 
   static const String route = '/register';
 
@@ -17,7 +17,7 @@ class RegisterScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
-            AuthScreenHeading(),
+            AuthPageHeading(),
             AuthForm(authMode: AuthMode.register),
             AuthLink(authMode: AuthMode.register),
           ],

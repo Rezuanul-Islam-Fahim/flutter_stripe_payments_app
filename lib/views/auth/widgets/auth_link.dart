@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../helpers/auth_helper.dart';
-import '../screens/login_screen.dart';
-import '../screens/register_screen.dart';
+import '../login.dart';
+import '../register.dart';
 
 class AuthLink extends StatelessWidget {
   const AuthLink({super.key, this.authMode});
@@ -16,7 +16,7 @@ class AuthLink extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).pushReplacementNamed(
-          authMode == AuthMode.login ? RegisterScreen.route : LoginScreen.route,
+          authMode == AuthMode.login ? Register.route : Login.route,
         );
       },
       child: Row(
