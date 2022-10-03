@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/widgets/unfocus_body.dart';
 import 'helpers/auth_helper.dart';
 import 'widgets/auth_form.dart';
 import 'widgets/auth_link.dart';
@@ -12,15 +13,17 @@ class Register extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            AuthPageHeading(),
-            AuthForm(authMode: AuthMode.register),
-            AuthLink(authMode: AuthMode.register),
-          ],
+    return UnfocusBody(
+      child: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              AuthPageHeading(),
+              AuthForm(authMode: AuthMode.register),
+              AuthLink(authMode: AuthMode.register),
+            ],
+          ),
         ),
       ),
     );

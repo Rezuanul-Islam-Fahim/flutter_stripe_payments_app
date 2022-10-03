@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/widgets/unfocus_body.dart';
 import 'helpers/auth_helper.dart';
 import 'widgets/auth_form.dart';
 import 'widgets/auth_link.dart';
@@ -12,15 +13,17 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            AuthPageHeading(),
-            AuthForm(authMode: AuthMode.login),
-            AuthLink(authMode: AuthMode.login),
-          ],
+    return UnfocusBody(
+      child: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              AuthPageHeading(),
+              AuthForm(authMode: AuthMode.login),
+              AuthLink(authMode: AuthMode.login),
+            ],
+          ),
         ),
       ),
     );
