@@ -3,7 +3,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../services/auth_service.dart';
+import '../helpers/auth_exception_handler.dart';
 import '../helpers/auth_helper.dart';
+import '../models/auth_result.dart';
 
 class AuthForm extends StatefulWidget {
   const AuthForm({super.key, this.authMode});
@@ -21,20 +23,35 @@ class _AuthFormState extends State<AuthForm> {
   String _email = '';
 
   Future<void> authenticate(BuildContext context) async {
+    AuthStatus? status;
+
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
 
       if (kDebugMode) {
+        print('*********** Login Credentials ***********');
         print(_email);
         print(_passwordController.text);
+        print('== ************** == ************** ==');
       }
 
       if (widget.authMode == AuthMode.login) {
         _authService.login();
       } else {
-        _authService.createAccount(
+        status = await _authService.createAccount(
           email: _email,
           password: _passwordController.text,
+        );
+      }
+
+      if (mounted) {
+        AuthResult authResult = AuthExceptionHandler.getAuthResult(status);
+
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(authResult.content),
+          ),
         );
       }
     }
