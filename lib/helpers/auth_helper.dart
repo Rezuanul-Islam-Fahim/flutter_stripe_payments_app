@@ -25,7 +25,7 @@ class AuthHelper {
 
   static ButtonStyle getAuthButtonStyle(BuildContext context) {
     return ElevatedButton.styleFrom(
-      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 25),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),

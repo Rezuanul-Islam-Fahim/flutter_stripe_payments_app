@@ -86,11 +86,11 @@ class _PasswordFieldState extends State<PasswordField> {
           hintText: widget.hintText,
           prefixIcon: Icons.key_rounded,
         ).copyWith(
-          suffixIcon: IconButton(
-            icon: Icon(
+          suffixIcon: GestureDetector(
+            onTap: _togglePasswordVisibility,
+            child: Icon(
               _obscureText ? Icons.visibility_off : Icons.visibility,
             ),
-            onPressed: _togglePasswordVisibility,
           ),
         ),
         obscureText: _obscureText,
