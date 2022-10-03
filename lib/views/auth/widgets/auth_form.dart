@@ -22,11 +22,16 @@ class _AuthFormState extends State<AuthForm> {
   final TextEditingController _passwordController = TextEditingController();
   final AuthService _authService = AuthService();
   String _email = '';
+  bool isLoggingIn = false;
 
   Future<void> authenticate(BuildContext context) async {
     AuthStatus? status;
 
     if (_formKey.currentState!.validate()) {
+      setState(() {
+        isLoggingIn = true;
+      });
+
       _formKey.currentState!.save();
 
       if (kDebugMode) {
@@ -47,6 +52,10 @@ class _AuthFormState extends State<AuthForm> {
           password: _passwordController.text,
         );
       }
+
+      setState(() {
+        isLoggingIn = false;
+      });
 
       if (mounted) {
         AuthResult authResult = AuthExceptionHandler.getAuthResult(status);
@@ -130,23 +139,48 @@ class _AuthFormState extends State<AuthForm> {
                 const SizedBox(height: 18),
               ],
             ),
-          SizedBox(
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 35),
-              child: ElevatedButton(
-                style: AuthHelper.getAuthButtonStyle(context),
-                onPressed: () => authenticate(context),
-                child: Text(
+          _buildAuthenticateButton(context),
+          const SizedBox(height: 20),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAuthenticateButton(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 35),
+        child: ElevatedButton(
+          style: AuthHelper.getAuthButtonStyle(context).copyWith(
+            padding: MaterialStateProperty.all(
+              !isLoggingIn
+                  ? const EdgeInsets.symmetric(
+                      vertical: 16,
+                      horizontal: 25,
+                    )
+                  : const EdgeInsets.symmetric(
+                      vertical: 13,
+                      horizontal: 25,
+                    ),
+            ),
+          ),
+          onPressed: () => authenticate(context),
+          child: !isLoggingIn
+              ? Text(
                   widget.authMode == AuthMode.login
                       ? 'Login Now'
                       : 'Create Account',
+                )
+              : const SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                    strokeWidth: 1.4,
+                  ),
                 ),
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-        ],
+        ),
       ),
     );
   }
