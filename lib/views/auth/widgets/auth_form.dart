@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -47,12 +48,17 @@ class _AuthFormState extends State<AuthForm> {
       if (mounted) {
         AuthResult authResult = AuthExceptionHandler.getAuthResult(status);
 
-        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(authResult.content),
-          ),
-        );
+        Flushbar(
+          title: authResult.title,
+          message: authResult.content,
+          duration: const Duration(seconds: 2),
+          leftBarIndicatorColor: status != AuthStatus.success
+              ? Colors.red[700]
+              : Colors.green[500],
+          margin: const EdgeInsets.all(20),
+          borderRadius: BorderRadius.circular(10),
+          flushbarStyle: FlushbarStyle.FLOATING,
+        ).show(context);
       }
     }
   }
