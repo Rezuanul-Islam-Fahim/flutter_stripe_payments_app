@@ -17,7 +17,7 @@ class AuthExceptionHandler {
     AuthStatus? status;
 
     switch (code) {
-      case 'wrong-passord':
+      case 'wrong-password':
         status = AuthStatus.wrongPassword;
         break;
       case 'invalid-email':
@@ -76,7 +76,7 @@ class AuthExceptionHandler {
       case AuthStatus.userNotFound:
         result = const AuthResult(
           title: 'Not Found',
-          content: 'Looks like an account with this email is not registered',
+          content: 'Looks like account with this email is not registered',
         );
         break;
       case AuthStatus.emailAlreadyInUse:

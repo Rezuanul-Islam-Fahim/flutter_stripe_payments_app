@@ -8,7 +8,34 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<void> login() async {}
+  Future<AuthStatus> login({
+    required String email,
+    required String password,
+  }) async {
+    AuthStatus status;
+
+    try {
+      await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      status = AuthStatus.success;
+    } on FirebaseAuthException catch (e) {
+      if (kDebugMode) {
+        print('*********** Auth Exception ***********');
+        print(e.code);
+        print(e.message);
+        print('== ************** == ************** ==');
+      }
+
+      status = AuthExceptionHandler.getAuthStatus(e.code);
+    } catch (e) {
+      status = AuthStatus.unknown;
+    }
+
+    return status;
+  }
 
   Future<AuthStatus> createAccount({
     required String email,

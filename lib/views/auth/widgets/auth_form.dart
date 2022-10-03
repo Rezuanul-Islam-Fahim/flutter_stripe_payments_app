@@ -37,7 +37,10 @@ class _AuthFormState extends State<AuthForm> {
       }
 
       if (widget.authMode == AuthMode.login) {
-        _authService.login();
+        status = await _authService.login(
+          email: _email,
+          password: _passwordController.text,
+        );
       } else {
         status = await _authService.createAccount(
           email: _email,
@@ -51,7 +54,7 @@ class _AuthFormState extends State<AuthForm> {
         Flushbar(
           title: authResult.title,
           message: authResult.content,
-          duration: const Duration(seconds: 2),
+          duration: const Duration(seconds: 3),
           leftBarIndicatorColor: status != AuthStatus.success
               ? Colors.red[700]
               : Colors.green[500],
