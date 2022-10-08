@@ -23,6 +23,7 @@ class _AuthFormState extends State<AuthForm> {
   final TextEditingController _passwordController = TextEditingController();
   final AuthService _authService = AuthService();
   String _email = '';
+  String _username = '';
   bool isLoggingIn = false;
 
   Future<void> authenticate(BuildContext context) async {
@@ -37,6 +38,7 @@ class _AuthFormState extends State<AuthForm> {
 
       if (kDebugMode) {
         print('*********** Login Credentials ***********');
+        print(_username);
         print(_email);
         print(_passwordController.text);
         print('== ************** == ************** ==');
@@ -49,6 +51,7 @@ class _AuthFormState extends State<AuthForm> {
         );
       } else {
         status = await _authService.createAccount(
+          username: _username,
           email: _email,
           password: _passwordController.text,
         );
@@ -89,6 +92,31 @@ class _AuthFormState extends State<AuthForm> {
       child: Column(
         children: [
           const SizedBox(height: 30),
+          if (widget.authMode == AuthMode.register)
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 35),
+                  child: TextFormField(
+                    decoration: AuthHelper.getInputDecoration(
+                      hintText: 'Username',
+                      prefixIcon: Icons.person,
+                    ),
+                    textInputAction: TextInputAction.done,
+                    autocorrect: true,
+                    validator: (String? value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter a username';
+                      }
+
+                      return null;
+                    },
+                    onSaved: (String? value) => _username = value!,
+                  ),
+                ),
+              ],
+            ),
+          const SizedBox(height: 18),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 35),
             child: TextFormField(
