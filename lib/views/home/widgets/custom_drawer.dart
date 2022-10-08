@@ -18,6 +18,12 @@ class CustomDrawer extends StatelessWidget {
               AppConstants.defaultProfilePic,
             ),
           ),
+          const Spacer(),
+          ListTile(
+            title: const Text('Logout'),
+            leading: const Icon(Icons.logout),
+            onTap: () {},
+          ),
         ],
       ),
     );
