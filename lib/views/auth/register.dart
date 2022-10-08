@@ -15,14 +15,17 @@ class Register extends StatelessWidget {
   Widget build(BuildContext context) {
     return UnfocusScope(
       child: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              AuthPageHeading(),
-              AuthForm(authMode: AuthMode.register),
-              AuthLink(authMode: AuthMode.register),
-            ],
+        body: SingleChildScrollView(
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                AuthPageHeading(),
+                AuthForm(authMode: AuthMode.register),
+                AuthLink(authMode: AuthMode.register),
+              ],
+            ),
           ),
         ),
       ),
