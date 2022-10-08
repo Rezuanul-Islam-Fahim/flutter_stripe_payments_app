@@ -7,7 +7,7 @@ import '../../../services/auth_service.dart';
 import '../../home/home.dart';
 import '../helpers/auth_exception_handler.dart';
 import '../helpers/auth_helper.dart';
-import '../models/auth_result.dart';
+import '../../../models/auth_result.dart';
 
 class AuthForm extends StatefulWidget {
   const AuthForm({super.key, this.authMode});

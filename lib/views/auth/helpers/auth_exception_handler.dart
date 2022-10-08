@@ -1,4 +1,4 @@
-import '../models/auth_result.dart';
+import '../../../models/auth_result.dart';
 
 enum AuthStatus {
   loginSuccess,

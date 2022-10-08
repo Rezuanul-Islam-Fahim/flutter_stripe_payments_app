@@ -5,7 +5,6 @@ import 'package:flutter_stripe_payments_app/core/routes.dart';
 import 'package:flutter_stripe_payments_app/views/splash.dart';
 
 import 'core/app_theme.dart';
-import 'views/auth/login.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
