@@ -1,9 +1,11 @@
 import 'dart:ui';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../core/constants.dart';
+import '../../auth/login.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -50,7 +52,12 @@ class CustomDrawer extends StatelessWidget {
             child: const Text('Cancel'),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () => FirebaseAuth.instance.signOut().then((_) {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                Login.route,
+                (_) => false,
+              );
+            }),
             child: const Text('Logout'),
           ),
         ],
