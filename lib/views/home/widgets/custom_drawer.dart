@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:another_flushbar/flushbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -57,6 +58,15 @@ class CustomDrawer extends StatelessWidget {
                 Login.route,
                 (_) => false,
               );
+
+              Flushbar(
+                message: 'You\'ve logged out',
+                duration: const Duration(seconds: 3),
+                leftBarIndicatorColor: Colors.blue,
+                margin: const EdgeInsets.all(20),
+                borderRadius: BorderRadius.circular(10),
+                flushbarStyle: FlushbarStyle.FLOATING,
+              ).show(context);
             }),
             child: const Text('Logout'),
           ),
