@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/custom_drawer.dart';
+
 class Home extends StatelessWidget {
   const Home({super.key});
 
@@ -8,6 +10,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const CustomDrawer(),
       appBar: AppBar(
         title: const Text('Flutter Stripe Payments'),
       ),
