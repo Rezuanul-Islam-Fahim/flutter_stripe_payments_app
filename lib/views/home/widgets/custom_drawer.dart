@@ -43,7 +43,7 @@ class CustomDrawer extends StatelessWidget {
 
   Widget _buildLogoutConfirm(BuildContext context) {
     return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+      filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
       child: AlertDialog(
         actionsPadding: const EdgeInsets.fromLTRB(0, 0, 20, 15),
         title: const Text('Are you sure you want to logout?'),
