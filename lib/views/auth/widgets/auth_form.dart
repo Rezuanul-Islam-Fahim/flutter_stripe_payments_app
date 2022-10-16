@@ -114,9 +114,9 @@ class _AuthFormState extends State<AuthForm> {
                     onSaved: (String? value) => _username = value!,
                   ),
                 ),
+                const SizedBox(height: 18),
               ],
             ),
-          const SizedBox(height: 18),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 35),
             child: TextFormField(
