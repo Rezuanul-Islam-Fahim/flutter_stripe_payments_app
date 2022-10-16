@@ -187,18 +187,22 @@ class _AuthFormState extends State<AuthForm> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 35),
         child: ElevatedButton(
-          style: AuthHelper.getAuthButtonStyle(context).copyWith(
-            padding: MaterialStateProperty.all(
-              !isLoggingIn
-                  ? const EdgeInsets.symmetric(
-                      vertical: 16,
-                      horizontal: 25,
-                    )
-                  : const EdgeInsets.symmetric(
-                      vertical: 13,
-                      horizontal: 25,
-                    ),
+          style: ElevatedButton.styleFrom(
+            padding: !isLoggingIn
+                ? const EdgeInsets.symmetric(
+                    vertical: 16,
+                    horizontal: 25,
+                  )
+                : const EdgeInsets.symmetric(
+                    vertical: 13,
+                    horizontal: 25,
+                  ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
             ),
+            textStyle: Theme.of(context).textTheme.titleSmall,
+            elevation: 0,
+            shadowColor: Colors.transparent,
           ),
           onPressed: !isLoggingIn ? () => authenticate(context) : () {},
           child: !isLoggingIn
