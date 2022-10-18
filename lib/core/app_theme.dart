@@ -19,7 +19,7 @@ class AppTheme {
               fontWeight: FontWeight.bold,
             ),
             displayMedium: const TextStyle(
-              fontSize: 28,
+              fontSize: 26,
               fontWeight: FontWeight.bold,
             ),
           ),

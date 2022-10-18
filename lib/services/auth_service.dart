@@ -56,7 +56,10 @@ class AuthService {
 
       status = AuthStatus.registerSuccess;
 
-      await _firestore.collection(AppConstants.user).doc(userData.uid).set(
+      await _firestore
+          .collection(AppConstants.userCollection)
+          .doc(userData.uid)
+          .set(
             user.User(
               id: userData.uid,
               email: userData.email,
