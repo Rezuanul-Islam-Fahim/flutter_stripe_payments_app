@@ -21,9 +21,12 @@ class Login extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
+                SizedBox(height: 140),
                 AuthPageHeading(),
                 AuthForm(authMode: AuthMode.login),
+                Spacer(),
                 AuthLink(authMode: AuthMode.login),
+                SizedBox(height: 30),
               ],
             ),
           ),

@@ -21,9 +21,12 @@ class Register extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
+                SizedBox(height: 100),
                 AuthPageHeading(),
                 AuthForm(authMode: AuthMode.register),
+                Spacer(),
                 AuthLink(authMode: AuthMode.register),
+                SizedBox(height: 30),
               ],
             ),
           ),
