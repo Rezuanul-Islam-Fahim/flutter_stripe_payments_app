@@ -20,17 +20,30 @@ class Login extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                SizedBox(height: 140),
-                AuthPageHeading(),
-                AuthForm(authMode: AuthMode.login),
-                Spacer(),
-                AuthLink(authMode: AuthMode.login),
-                SizedBox(height: 30),
+              children: [
+                const SizedBox(height: 140),
+                const AuthPageHeading(),
+                const AuthForm(authMode: AuthMode.login),
+                _buildForgotPassword(context),
+                const Spacer(),
+                const AuthLink(authMode: AuthMode.login),
+                const SizedBox(height: 30),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildForgotPassword(BuildContext context) {
+    return GestureDetector(
+      onTap: () {},
+      child: Text(
+        'Forgot Password?',
+        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+              color: Theme.of(context).primaryColor,
+            ),
       ),
     );
   }
