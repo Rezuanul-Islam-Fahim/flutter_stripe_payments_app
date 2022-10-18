@@ -3,6 +3,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/app_theme.dart';
 import '../../../services/auth_service.dart';
 import '../../home/home.dart';
 import '../helpers/auth_exception_handler.dart';
@@ -61,27 +62,27 @@ class _AuthFormState extends State<AuthForm> {
         isLoggingIn = false;
       });
 
-      if (mounted) {
-        AuthResult authResult = AuthExceptionHandler.getAuthResult(status);
+      if (!mounted) return;
 
-        if (status == AuthStatus.loginSuccess ||
-            status == AuthStatus.registerSuccess) {
-          Navigator.of(context).pushReplacementNamed(Home.route);
-        }
+      AuthResult authResult = AuthExceptionHandler.getAuthResult(status);
 
-        Flushbar(
-          title: authResult.title,
-          message: authResult.content,
-          duration: const Duration(seconds: 3),
-          leftBarIndicatorColor: status != AuthStatus.loginSuccess &&
-                  status != AuthStatus.registerSuccess
-              ? Colors.red[700]
-              : Colors.green[500],
-          margin: const EdgeInsets.all(20),
-          borderRadius: BorderRadius.circular(10),
-          flushbarStyle: FlushbarStyle.FLOATING,
-        ).show(context);
+      if (status == AuthStatus.loginSuccess ||
+          status == AuthStatus.registerSuccess) {
+        Navigator.of(context).pushReplacementNamed(Home.route);
       }
+
+      Flushbar(
+        title: authResult.title,
+        message: authResult.content,
+        duration: const Duration(seconds: 3),
+        leftBarIndicatorColor: status != AuthStatus.loginSuccess &&
+                status != AuthStatus.registerSuccess
+            ? AppTheme.errorColor
+            : AppTheme.successColor,
+        margin: const EdgeInsets.all(20),
+        borderRadius: BorderRadius.circular(10),
+        flushbarStyle: FlushbarStyle.FLOATING,
+      ).show(context);
     }
   }
 

@@ -26,7 +26,7 @@ class Register extends StatelessWidget {
                 AuthForm(authMode: AuthMode.register),
                 Spacer(),
                 AuthLink(authMode: AuthMode.register),
-                SizedBox(height: 30),
+                SizedBox(height: 40),
               ],
             ),
           ),

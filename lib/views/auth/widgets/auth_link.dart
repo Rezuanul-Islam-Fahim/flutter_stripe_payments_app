@@ -29,7 +29,7 @@ class AuthLink extends StatelessWidget {
             style: Theme.of(context).textTheme.titleSmall,
           ),
           Text(
-            authMode == AuthMode.login ? 'Register Here' : 'Login here',
+            authMode == AuthMode.login ? 'Register' : 'Login',
             style: theme.textTheme.titleSmall!.copyWith(
               color: theme.primaryColor,
             ),

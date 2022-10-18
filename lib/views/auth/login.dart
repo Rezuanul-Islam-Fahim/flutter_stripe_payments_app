@@ -27,7 +27,7 @@ class Login extends StatelessWidget {
                 _buildForgotPassword(context),
                 const Spacer(),
                 const AuthLink(authMode: AuthMode.login),
-                const SizedBox(height: 30),
+                const SizedBox(height: 40),
               ],
             ),
           ),
