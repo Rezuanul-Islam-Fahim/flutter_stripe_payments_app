@@ -19,12 +19,11 @@ class Register extends StatelessWidget {
           child: SizedBox(
             height: MediaQuery.of(context).size.height,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
                 SizedBox(height: 100),
                 AuthPageHeading(),
                 AuthForm(authMode: AuthMode.register),
-                Spacer(),
                 AuthLink(authMode: AuthMode.register),
                 SizedBox(height: 40),
               ],
